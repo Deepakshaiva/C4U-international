@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Campus4U International Education Consultancy</title>
+<style>
+/* ====== Additional Responsive Adjustments ====== */
+@media (max-width: 1200px) {
+  .hero h1 { font-size: 2.5em; }
+  .hero p { font-size: 1.1em; }
+  .hero button { padding: 10px 18px; font-size: 0.95em; }
+}
+
+@media (max-width: 992px) {
+  nav { flex-wrap: wrap; gap: 15px; }
+  nav ul { flex-direction: column; width: 100%; gap: 10px; }
+  nav ul li ul { position: static; border-radius: 0; }
+  nav ul li:hover ul { display: block; }
+  .about-container { flex-direction: column; gap: 30px; }
+  .hero h1 { font-size: 2.2em; }
+  .hero p { font-size: 1em; }
+}
+
+@media (max-width: 768px) {
+  .hero { height: auto; padding: 60px 20px; }
+  .hero h1 { font-size: 1.8em; }
+  .hero p { font-size: 0.95em; }
+  .hero-buttons { flex-direction: column; gap: 10px; }
+  .service-cards { grid-template-columns: 1fr; }
+  .value-grid { grid-template-columns: 1fr; }
+  .country-slider { gap: 15px; }
+}
+
+@media (max-width: 576px) {
+  nav .logo { font-size: 1.2em; }
+  .hero h1 { font-size: 1.5em; }
+  .hero p { font-size: 0.9em; }
+  .hero button { padding: 8px 15px; font-size: 0.9em; }
+  .about-content h2 { font-size: 1.5em; }
+  .about-content p, .about-list li { font-size: 0.9em; }
+  .study-abroad h2 { font-size: 1.5em; }
+  .country-card { flex: 0 0 200px; }
+  footer .footer-col { min-width: 100%; }
+  footer .footer-container { flex-direction: column; align-items: center; gap: 20px; }
+  .footer-bottom { font-size: 13px; }
+}
+
+  /* ====== Global Styles ====== */
+  body { margin:0; font-family: 'Segoe UI', sans-serif; color:#333; line-height:1.6; }
+  a { text-decoration:none; color: inherit; }
+  img { max-width:100%; display:block; }
+  button { cursor:pointer; }
+  h1,h2,h3,h4 { margin:0 0 10px; }
+
+  /* ====== Header ====== */
+  header { background:#ebf1f6; color:#041c91; position:sticky; top:0; z-index:1000; }
+  .container { width:90%; max-width:1500px; margin:0 auto; }
+  nav { display:flex; justify-content:space-between; align-items:center; padding:15px 0; }
+  nav .logo { font-size:1.5em; font-weight:bold; }
+  nav ul { list-style:none; display:flex; gap:20px; }
+  nav ul li { position:relative; }
+  nav ul li ul { display:none; position:absolute; top:30px; left:0; background:#0059b3; padding:10px 0; border-radius:5px; }
+  nav ul li:hover ul { display:block; }
+  nav ul li ul li { padding:5px 20px; }
+
+  /* ====== Hero ====== */
+  .hero { background:url('hero-banner.jpg') no-repeat center/cover; height:100vh; display:flex; flex-direction:column; justify-content:center; align-items:center; color:#fff; text-align:center; position:relative; }
+  .hero::after { content:''; position:absolute; inset:0; background:rgba(0,0,0,0.5); }
+  .hero-content { position:relative; z-index:1; }
+  .hero h1 { font-size:3em; margin-bottom:10px; }
+  .hero p { font-size:1.2em; margin-bottom:20px; }
+  .hero button { padding:10px 20px; margin:5px; border:none; background:#ff9900; color:#fff; border-radius:5px; font-size:1em; }
+
+  /* ====== Services ====== */
+  /* ====== Services Section ====== */
+.services {
+  padding: 80px 20px;
+  background: linear-gradient(135deg, #f8faff 0%, #eef3ff 100%);
+  text-align: center;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  color: #001a4d;
+  margin-bottom: 10px;
+  position: relative;
+}
+
+.section-subtitle {
+  font-size: 1.1rem;
+  color: #555;
+  margin-bottom: 50px;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.service-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 30px;
+}
+
+.card {
+  background: #fff;
+  padding: 40px 25px;
+  border-radius: 18px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at center, rgba(3,61,233,0.08), transparent 70%);
+  transform: rotate(25deg);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.card:hover::before {
+  opacity: 1;
+}
+
+.card:hover {
+  transform: translateY(-12px) scale(1.02);
+  box-shadow: 0 15px 35px rgba(3,61,233,0.15);
+}
+
+.icon-circle {
+  width: 80px;
+  height: 80px;
+  background: #033de9;
+  margin: 0 auto 20px auto;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 15px rgba(3,61,233,0.3);
+}
+
+.icon-circle img {
+  width: 40px;
+  filter: brightness(0) invert(1);
+}
+
+.card h3 {
+  font-size: 1.3rem;
+  margin-bottom: 15px;
+  color: #001a4d;
+}
+
+.card p {
+  font-size: 1rem;
+  color: #444;
+  line-height: 1.7;
+}
+
+/* ====== Scroll Animation ====== */
+.animate-up {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.8s ease;
+}
+
+.animate-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+  /* ====== About ====== */
+.about {
+  padding: 70px 0;
+  background: #f8faff; /* subtle background */
+}
+
+.about-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 40px;
+}
+
+.about-image {
+  position: relative;
+  flex: 1;
+}
+
+.about-image img {
+  width: 100%;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.about-badge {
+  position: absolute;
+  bottom: 15px;
+  left: 15px;
+  background: #033de9;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 14px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.about-content {
+  flex: 1;
+}
+
+.about-content h2 {
+  font-size: 2rem;
+  margin-bottom: 15px;
+  color: #001a4d;
+}
+
+.about-content h2 span {
+  color: #033de9;
+}
+
+.about-content p {
+  margin-bottom: 15px;
+  color: #444;
+  line-height: 1.8;
+}
+
+.about-list {
+  margin: 20px 0;
+  padding: 0;
+  list-style: none;
+}
+
+.about-list li {
+  margin: 10px 0;
+  font-size: 1rem;
+  color: #333;
+  display: flex;
+  align-items: center;
+}
+
+.btn-primary {
+  padding: 12px 25px;
+  background: #033de9;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-primary:hover {
+  background: #001a99;
+}
+
+
+  /* ====== Study Abroad ====== */
+  .study-abroad {
+  padding: 50px 0;
+  background:#033de9; /* matches your theme */
+  color: #fff;
+  text-align: center;
+}
+
+.study-abroad h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.country-slider {
+  display: flex;
+  overflow-x: auto;
+  gap: 20px;
+  padding: 10px;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+
+.country-slider::-webkit-scrollbar {
+  display: none; /* hide scrollbar */
+}
+
+.country-card {
+  flex: 0 0 250px; /* card width */
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  color: #001a4d;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  scroll-snap-align: start;
+  transition: transform 0.3s ease;
+}
+
+.country-card:hover {
+  transform: translateY(-5px);
+}
+
+.country-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.country-card p {
+  margin: 10px 0;
+  font-weight: 600;
+}
+
+/* ====== Core Values ====== */
+.values {
+  padding: 70px 0;
+  text-align: center;
+  background: #f9fafc;
+}
+
+.values h2 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  font-weight: 700;
+  color: #041c91;
+}
+
+.values-subtitle {
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 40px;
+}
+
+.value-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 25px;
+}
+
+.value-card {
+  background: #fff;
+  padding: 35px 25px;
+  border-radius: 15px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.value-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+}
+
+.value-card .icon {
+  font-size: 2.5rem;
+  color: #ff9900;
+  margin-bottom: 15px;
+}
+
+.value-card h3 {
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+  color: #033de9;
+  font-weight: 600;
+}
+
+.value-card p {
+  font-size: 0.95rem;
+  color: #555;
+  line-height: 1.6;
+}
+
+  
+  /* ====== Footer ====== */
+footer {
+  background:#033de9;
+  color:#fff;
+  padding:50px 20px 20px;
+}
+.footer-container {
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  gap:30px;
+}
+.footer-col {
+  flex:1;
+  min-width:220px;
+}
+.footer-col h4 {
+  margin-bottom:15px;
+  padding-bottom:5px;
+  border-bottom:1px solid #fff;
+  font-size:18px;
+}
+.footer-col p {
+  margin:10px 0;
+  line-height:1.6;
+}
+.footer-col ul {
+  list-style:none;
+  padding:0;
+}
+.footer-col ul li {
+  margin:8px 0;
+}
+.footer-col ul li a {
+  color:#fff;
+  text-decoration:none;
+}
+.footer-col ul li a:hover {
+  color:#ffcc00;
+}
+.social-icons {
+  margin-top:15px;
+  display:flex;
+  gap:10px;
+}
+.social-icons a {
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:35px;
+  height:35px;
+  background:#fff;
+  color:#001a66;
+  border-radius:6px;
+  font-size:18px;
+}
+.social-icons a:hover {
+  background:#ffcc00;
+  color:#001a66;
+}
+.footer-col img {
+  margin-top:15px;
+  width:150px;
+  height:150px;
+}
+.footer-bottom {
+  text-align:center;
+  margin-top:30px;
+  font-size:14px;
+}
+.footer-bottom p {
+  margin:5px 0;
+}
+
+  /* ====== Responsive ====== */
+  @media(max-width:768px){
+    nav ul { flex-direction:column; gap:10px; }
+    .about { flex-direction:column; }
+    .service-cards, .country-grid, .value-grid { flex-direction:column; align-items:center; }
+    .hero h1 { font-size:2em; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <nav>
+      <div class="logo">CAMPUS4U INTERNATIONAL</div>
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About Us</a></li>
+        <li class="dropdown">
+          <a href="#study">Study Abroad ▾</a>
+          <ul class="dropdown-menu">
+            <li><a href="#">USA</a></li>
+            <li><a href="#">UK</a></li>
+            <li><a href="#">Canada</a></li>
+            <li><a href="#">Australia</a></li>
+            <li><a href="#">Germany</a></li>
+          </ul>
+        </li>
+        <li><a href="#courses">Courses</a></li>
+        <li><a href="#counseling">Academic Counseling</a></li>
+        <li><a href="#contact">Contact Us</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<section class="hero" id="home">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <h1>Welcome to <span>Campus4U International</span></h1>
+    <p>Your Trusted Partner for <strong>Global Education & Career Opportunities</strong></p>
+    <div class="hero-buttons">
+      <a href="#contact" class="btn-primary">Contact Us</a>
+      <a href="#about" class="btn-secondary">Explore About Us</a>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="services" id="courses">
+  <div class="container">
+    <h2 class="section-title">🌟 Our Premium Services</h2>
+    <p class="section-subtitle">
+      We provide end-to-end support to help students achieve their study abroad dreams.
+    </p>
+
+    <div class="service-cards">
+      <div class="card animate-up">
+        <div class="icon-circle">
+          <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Guidance">
+        </div>
+        <h3>Overseas Education Guidance</h3>
+        <p>
+          Get expert advice on selecting the right country, university, and course that 
+          fits your career aspirations and budget.
+        </p>
+      </div>
+
+      <div class="card animate-up">
+        <div class="icon-circle">
+          <img src="https://cdn-icons-png.flaticon.com/512/3135/3135823.png" alt="University Selection">
+        </div>
+        <h3>University & Course Selection</h3>
+        <p>
+          Personalized recommendations from top global universities tailored to your 
+          academic strengths and goals.
+        </p>
+      </div>
+
+      <div class="card animate-up">
+        <div class="icon-circle">
+          <img src="https://cdn-icons-png.flaticon.com/512/3135/3135768.png" alt="Admission Assistance">
+        </div>
+        <h3>Application & Admission Assistance</h3>
+        <p>
+          End-to-end application support, including documentation, SOP guidance, 
+          and interview preparation.
+        </p>
+      </div>
+
+      <div class="card animate-up">
+        <div class="icon-circle">
+          <img src="https://cdn-icons-png.flaticon.com/512/484/484167.png" alt="Visa Support">
+        </div>
+        <h3>Visa & Pre-Departure Support</h3>
+        <p>
+          Hassle-free visa assistance, travel planning, and pre-departure orientation 
+          to ensure a smooth journey abroad.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="about" id="about">
+  <div class="container about-container">
+    <!-- Image Section -->
+    <div class="about-image animate-left">
+      <img src="LOGO.png" alt="About Us">
+    </div>
+
+    <!-- Content Section -->
+    <div class="about-content animate-right">
+      <h2>About <span>Campus4U International</span></h2>
+      <p>
+        Since 2002, <strong>Campus4U International</strong> has been empowering students to pursue 
+        higher education across the globe. We are committed to guiding students at every stage — from 
+        selecting the right country and university to securing admissions and building successful careers.
+      </p>
+
+      <ul class="about-list">
+        <li>🌍 Trusted by <strong>thousands of students</strong> across India</li>
+        <li>🎓 Partnerships with <strong>top global universities</strong></li>
+        <li>📈 Proven track record of successful admissions</li>
+        <li>🤝 Personalized mentoring & career counseling</li>
+      </ul>
+
+      <button class="btn-primary" onclick="scrollToSection('contact')">Get in Touch</button>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="study-abroad" id="study">
+  <div class="container">
+    <h2>Study Abroad Options</h2>
+    <div class="country-slider">
+      <div class="country-card">
+        <img src="https://plus.unsplash.com/premium_photo-1661962264190-1c3c59453bdc?q=80&w=2080&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="UK">
+        <p>UK →</p>
+      </div>
+      <div class="country-card">
+        <img src="https://images.unsplash.com/photo-1514924013411-cbf25faa35bb?q=80&w=690&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Canada">
+        <p>Canada →</p>
+      </div>
+      <div class="country-card">
+        <img src="https://images.unsplash.com/photo-1503572327579-b5c6afe5c5c5?q=80&w=742&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="USA">
+        <p>USA →</p>
+      </div>
+      <div class="country-card">
+        <img src="https://images.unsplash.com/photo-1526958977630-bc61b30a2009?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Australia">
+        <p>Australia →</p>
+      </div>
+      <div class="country-card">
+        <img src="https://images.unsplash.com/photo-1554801790-808e40a34ce2?q=80&w=1025&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Ireland">
+        <p>Ireland →</p>
+      </div>
+      <div class="country-card">
+        <img src="https://images.unsplash.com/photo-1522054541898-adc6abd570e5?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Latvia">
+        <p>Latvia →</p>
+      </div>
+      <div class="country-card">
+        <img src="https://images.unsplash.com/photo-1511739001486-6bfe10ce785f?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="France">
+        <p>France →</p>
+      </div>
+      <div class="country-card">
+        <img src="https://images.unsplash.com/photo-1522307617379-e982f8754d27?q=80&w=1171&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Malta">
+        <p>Malta →</p>
+      </div>
+      <div class="country-card">
+        <img src="https://images.unsplash.com/photo-1509356843151-3e7d96241e11?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Sweden">
+        <p>Sweden →</p>
+      </div>
+      <div class="country-card">
+        <img src="https://images.unsplash.com/photo-1622214366189-72b19cc61597?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGdlcm1hbnl8ZW58MHx8MHx8fDA%3D" alt="Germany">
+        <p>Germany →</p>
+      </div>
+      <div class="country-card">
+        <img src="https://images.unsplash.com/photo-1553422734-fd8dd260a116?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Poland">
+        <p>Poland →</p>
+      </div>
+      <div class="country-card">
+        <img src="https://images.unsplash.com/flagged/photo-1559717865-a99cac1c95d8?q=80&w=1171&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Dubai">
+        <p>Dubai →</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="values">
+  <div class="container">
+    <h2>Our Core Values</h2>
+    <div class="value-grid">
+      <div class="value-card">
+        <h3>Integrity</h3>
+        <p>We maintain the highest standards of integrity and professionalism.</p>
+      </div>
+      <div class="value-card">
+        <h3>Global Perspective</h3>
+        <p>We provide opportunities that broaden your global horizon.</p>
+      </div>
+      <div class="value-card">
+        <h3>Commitment</h3>
+        <p>We are dedicated to helping students achieve their educational goals.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="footer-container">
+    
+    <!-- About Us -->
+    <div class="footer-col">
+      <h4>About Us</h4>
+      <p>
+        Campus4u International has been rendering meritorious and inimitable services
+        in the field of education. We are proud to introduce  ourselves 
+        as the leading  educational consultants for higher studies in 
+        South India.We facilitate world-class education in your  chosen 
+        field and develop people of character and caliber to  evolve 
+        competent citizens of the futuristic global village.
+      </p>
+      <div class="social-icons">
+        <a href="#"><i class="fa fa-linkedin"></i></a>
+        <a href="#"><i class="fa fa-instagram"></i></a>
+        <a href="#"><i class="fa fa-facebook"></i></a>
+      </div>
+    </div>
+
+    <!-- Quick Links -->
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#study">Study Abroad</a></li>
+        <li><a href="#courses">Courses</a></li>
+        <li><a href="#contact">Contact Us</a></li>
+      </ul>
+    </div>
+
+    <!-- Location -->
+    <div class="footer-col">
+      <h4>Location</h4>
+      <p><strong>Head Office</strong><br>
+        Issacs Centre Square,<br>
+        Sulthan Bathery,<br>
+        Wayanad – 673592,<br>
+        Kerala, India
+      </p>
+      <p><strong>Phone</strong><br>
+        +91 9567196889<br>
+        +91 7994506667
+      </p>
+      <p><strong>Email</strong><br>
+        campus4uinternational1@gmail.com<br>
+        contact@hreemacademia.com
+      </p>
+    </div>
+
+    <!-- QR Code -->
+    <div class="footer-col">
+      <h4>Connect with Us</h4>
+      <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://hreemacademia.com" alt="QR Code">
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <p>&copy; Copyright 2025 CAMPUS4U INTERNATIONAL All Rights Reserved</p>
+    <p>Designed by Codexa Technologies</p>
+  </div>
+</footer>
+
+<!-- Font Awesome for icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+<script>
+  function scrollToSection(id){
+    document.getElementById(id).scrollIntoView({behavior:'smooth'});
+  }
+</script>
+
+<script>
+  function revealOnScroll() {
+    document.querySelectorAll('.animate-up').forEach(el => {
+      const rect = el.getBoundingClientRect();
+      if (rect.top < window.innerHeight - 100) {
+        el.classList.add('visible');
+      }
+    });
+  }
+  window.addEventListener('scroll', revealOnScroll);
+  window.addEventListener('load', revealOnScroll);
+</script>
+
+
+</body>
+</html>
